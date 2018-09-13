@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="humanpredictions" />
+  <meta name="dcterms.date" content="2018-09-13" />
+  <title>Amazon HQ2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Amazon_DR_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="Amazon_DR_files/reveal.js-3.3.0.1/css/theme/solarized.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Amazon HQ2</h1>
+    <h2 class="author">humanpredictions</h2>
+    <h3 class="date">September 13, 2018</h3>
+</section>
+
+<section id="section" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<p>Looking at existing Amazon users in the database, the top 15 job titles for these employees are displayed next along with their most commonly listed skills:</p>
+<ol type="1">
+<li>Software Development Engineer</li>
+<li>Software Development Engineer II</li>
+<li>Software Engineer</li>
+<li>Software Development Manager</li>
+<li>Senior Software Development Manager etc.</li>
+</ol>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="sde_adr.png" alt="Software Development Engineer" width="60%" />
+<p class="caption">
+Software Development Engineer
+</p>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="sde2_hdr.png" alt="Software Development Engineer II" width="60%" />
+<p class="caption">
+Software Development Engineer II
+</p>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="se_hdr.png" alt="Software Engineer" width="60%" />
+<p class="caption">
+Software Engineer
+</p>
+</div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="sdm_hdr.png" alt="Software Development Manager" width="60%" />
+<p class="caption">
+Software Development Manager
+</p>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="ssdm_hdr.png" alt="Senior Software Development Manager" width="60%" />
+<p class="caption">
+Senior Software Development Manager
+</p>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="ssde_hdr.png" alt="Senior Software Development Engineer" width="60%" />
+<p class="caption">
+Senior Software Development Engineer
+</p>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="wde_hdr.png" alt="Web Development Engineer" width="60%" />
+<p class="caption">
+Web Development Engineer
+</p>
+</div>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="sd_hdr.png" alt="Software Developer" width="60%" />
+<p class="caption">
+Software Developer
+</p>
+</div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="spm_hdr.png" alt="Senior Product Manager" width="60%" />
+<p class="caption">
+Senior Product Manager
+</p>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="tpm_hdr.png" alt="Technical Project Manager" width="60%" />
+<p class="caption">
+Technical Project Manager
+</p>
+</div>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="sdm_hdr.png" alt="Software Development Manager" width="60%" />
+<p class="caption">
+Software Development Manager
+</p>
+</div>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="suxd_hdr.png" alt="Senior UX Designer" width="60%" />
+<p class="caption">
+Senior UX Designer
+</p>
+</div>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="uxd_hdr.png" alt="UX Designer" width="60%" />
+<p class="caption">
+UX Designer
+</p>
+</div>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="mls_hdr.png" alt="Machine Learning Scientist" width="60%" />
+<p class="caption">
+Machine Learning Scientist
+</p>
+</div>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="dt_hdr.png" alt="Design Technologist" width="60%" />
+<p class="caption">
+Design Technologist
+</p>
+</div>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="stpm_hdr.png" alt="Senior Technical Product Manager" width="60%" />
+<p class="caption">
+Senior Technical Product Manager
+</p>
+</div>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<p>Across all roles, Java, JavaScript, and HTML are the most used by existing Amazon employees. For specialized roles like machine learning specialist and program managers, other languages are dominant including python and C#.</p>
+<p>Looking at total tech employees from candidate states:</p>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<iframe src="abstop3_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="abstop3_AHQ2.png" alt="Total Prevalence of Top 3 Skills" width="60%" />
+<p class="caption">
+Total Prevalence of Top 3 Skills
+</p>
+</div>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<p>Looking at relative prevalence of top 3 languages:</p>
+<iframe src="top3_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<div class="figure">
+<img src="reltop3_AHQ2.png" alt="Relative Prevalence of Top 3 Skills" width="60%" />
+<p class="caption">
+Relative Prevalence of Top 3 Skills
+</p>
+</div>
+</section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<p>Looking at those who know Java:</p>
+<iframe src="java_AHQ2.html" width="800" height="800">
+</iframe>
+</section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<iframe src="js_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<iframe src="HTML_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<iframe src="python_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<section data-background="#CBF3F3">
+</section>
+<iframe src="c_AHQ2.html" width="1000" height="1000">
+</iframe>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<p>Bottom Line: Other than NYC, Chicago has the second highest absolute number of people with the top 3 skills at Amazon.</p>
+<ul>
+<li>Large number of individuals with Java, JS, and HTML</li>
+<li>relative to total workforce it lags behind Pittsburgh, Denver, Austin, and Boston</li>
+<li>For Python, Chicago offers much greater opportunity than Denver</li>
+<li>For C#, Chicago offers greater workforce than all competitors with possible exception of NYC</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="Amazon_DR_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Amazon_DR_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'Amazon_DR_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
